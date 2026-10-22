@@ -1,0 +1,994 @@
+
+<div class="portfolio-shell">
+  <!-- Interactive cursor glow -->
+<div class="cursor-glow" aria-hidden="true"></div>
+
+  <!-- NAVIGATION -->
+  <header class="topbar">
+    <a class="brand" href="#home" (click)="closeMenu()" aria-label="Meghna Bansod home">
+      <span class="brand-mark">M.</span>
+      <span class="brand-copy">
+        <strong>MEGHNA BANSOD</strong>
+        <small>SOFTWARE DEVELOPER</small>
+      </span>
+    </a>
+
+    <button
+      class="menu-toggle"
+      type="button"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="Toggle navigation">
+      <span></span><span></span>
+    </button>
+
+    <nav class="nav-links" [class.nav-open]="menuOpen">
+      <a href="#work" (click)="closeMenu()">Work </a>
+      <a href="#experience" (click)="closeMenu()">Experience </a>
+      <a href="#skills" (click)="closeMenu()">Skills </a>
+      <a href="#about" (click)="closeMenu()">About </a>
+      <a href="#certifications" (click)="closeMenu()">Certifications</a>
+      <a class="nav-contact" href="#contact" (click)="closeMenu()">Let's talk ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero section-wrap reveal-on-scroll" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-dot"></span> ENGINEERING MEETS CREATIVITY</p>
+
+        <h1>I build things<br>for the <span>real world.</span></h1>
+
+        <p class="hero-description">
+          Hey, I'm Meghna — a software developer working across
+          <strong>Java, Spring Boot and Angular.</strong>
+          I turn ideas into dependable applications, from backend APIs
+          to thoughtful user experiences.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="#work">Explore my work <span>↘</span></a>
+          <a class="button button-ghost" href="#contact">Let's connect <span>↗</span></a>
+        </div>
+
+        <div class="hero-meta">
+          <div><span>BASED IN</span><strong>Pune, India</strong></div>
+          <div><span>FOCUS</span><strong>Full-stack development</strong></div>
+          <div><span>BUILDING WITH</span><strong>Java · Angular · Spring Boot</strong></div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="visual-orbit orbit-one"></div>
+        <div class="visual-orbit orbit-two"></div>
+        <div class="visual-glow"></div>
+
+        <div class="photo-frame">
+          <div class="photo-topline">
+            <span>PROFILE / 001</span>
+            <span class="live-indicator">AVAILABLE FOR OPPORTUNITIES</span>
+          </div>
+
+          <img
+            class="profile-photo"
+            src="assets/meghna-profile.png"
+            alt="Portrait of Meghna Bansod"
+            fetchpriority="high">
+
+          <div class="photo-caption">
+            <div>
+              <strong>Meghna Bansod</strong>
+              <span>Software Developer</span>
+            </div>
+            <span class="caption-arrow">↗</span>
+          </div>
+        </div>
+
+        <div class="floating-note note-top">
+          <span class="note-icon">⌘</span>
+          <span><small>BACKEND</small><strong>Java + Spring Boot</strong></span>
+        </div>
+
+        <div class="floating-note note-bottom">
+          <span class="note-icon note-icon-blue">✳</span>
+          <span><small>FRONTEND</small><strong>Angular + TypeScript</strong></span>
+        </div>
+
+        <div class="visual-index">MH / 26</div>
+      </div>
+
+      <div class="hero-bottom">
+        <span>01 / INTRODUCTION</span>
+        <span>BUILDING PRODUCTS WITH PURPOSE</span>
+        <a href="#experience">SCROLL TO EXPLORE ↓</a>
+      </div>
+    </section>
+
+
+<!-- PROFESSIONAL EXPERIENCE -->
+<section class="experience-v2 content-section section-wrap reveal-on-scroll" id="experience">
+
+  <!-- Hero -->
+  <div class="exp-v2-hero">
+    <div class="exp-v2-intro">
+      <p class="eyebrow">
+        <span class="exp-v2-pulse"></span>
+        PROFESSIONAL EXPERIENCE
+      </p>
+
+      <h2>From ideas to <span>real-world impact.</span></h2>
+
+      <p>
+        Building and enhancing enterprise software across digital lending,
+        banking workflows, frontend interfaces, and backend integrations.
+      </p>
+    </div>
+
+    <div class="exp-v2-stats">
+      <div class="exp-v2-stat">
+        <span class="exp-v2-stat-icon">⌘</span>
+        <strong>04</strong>
+        <span>Platform modules</span>
+      </div>
+
+      <div class="exp-v2-stat">
+        <span class="exp-v2-stat-icon">▦</span>
+        <strong>03</strong>
+        <span>Banking clients</span>
+      </div>
+
+      <div class="exp-v2-stat">
+        <span class="exp-v2-stat-icon">&lt;/&gt;</span>
+        <strong>Full-stack</strong>
+        <span>Frontend + backend</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Career timeline -->
+  <div class="exp-v2-timeline">
+
+    <article class="exp-v2-entry" *ngFor="let item of experiences">
+
+      <div class="exp-v2-timeline-marker">
+        <span></span>
+        <small>{{ item.type }}</small>
+      </div>
+
+      <div class="exp-v2-card">
+
+        <!-- Company information -->
+        <div class="exp-v2-company-header">
+
+          <div class="exp-v2-company-identity">
+            <div class="exp-v2-logo">
+
+              <img
+                *ngIf="item.company === 'Lentra'"
+                src="https://lentra.ai/img/logo/logo-new.svg"
+                alt="Lentra logo"
+                loading="lazy">
+
+              <img
+                *ngIf="item.company === 'Anka Technology Solutions'"
+                src="https://www.anka.co.in/images/anka-logo.png"
+                alt="Anka Technology Solutions logo"
+                loading="lazy">
+
+              <span
+                *ngIf="item.company !== 'Lentra' &&
+                       item.company !== 'Anka Technology Solutions'">
+                {{ item.company.charAt(0) }}
+              </span>
+            </div>
+
+            <div class="exp-v2-role">
+              <span class="exp-v2-kicker">{{ item.type }}</span>
+              <h3>{{ item.role }}</h3>
+              <p class="exp-v2-company-name">{{ item.company }}</p>
+
+              <div class="exp-v2-meta">
+                <span>◷ {{ item.period }}</span>
+                <span *ngIf="item.location">
+                  ⌖ {{ item.location }}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="exp-v2-summary">
+            <p>{{ item.description }}</p>
+
+           <div class="tech-logo-link-container">
+  <a
+    *ngFor="let technology of item.technologies"
+    class="tech-logo-link"
+    [href]="getTechnology(technology).docsUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    [attr.aria-label]="technology + ' official documentation'"
+    [attr.title]="technology + ' — Open documentation'"
+  >
+    <img
+      *ngIf="getTechnology(technology).logo"
+      [src]="getTechnology(technology).logo"
+      [alt]="technology + ' logo'"
+      loading="lazy"
+      (error)="onTechnologyLogoError($event)"
+    />
+
+    <span
+      class="tech-logo-fallback"
+      [style.display]="getTechnology(technology).logo ? 'none' : 'inline-flex'"
+    >
+      {{ technology }}
+    </span>
+  </a>
+</div>
+          </div>
+
+        </div>
+
+        <!-- Detailed dashboard for the full-time Lentra role -->
+        <ng-container
+          *ngIf="item.company === 'Lentra' &&
+                 item.role === 'Associate Software Developer';
+                 else compactExperience">
+
+         
+<!-- Banking client showcase -->
+<div class="exp-v2-client-panel" *ngIf="item.showClients">
+
+  <div class="exp-v2-client-heading">
+    <div>
+      <span class="exp-v2-kicker">BANKING DOMAIN</span>
+      <h4>Enterprise client exposure</h4>
+    </div>
+
+    <span class="exp-v2-client-note">Through Lentra platforms</span>
+  </div>
+
+  <div class="exp-v2-client-grid">
+
+    <div class="exp-v2-client">
+      <div class="exp-v2-client-logo">
+        <img
+          src="assets/indusind.jpg"
+          alt="IndusInd Bank"
+          loading="lazy"
+          (error)="onLogoError($event)">
+        <span class="exp-v2-logo-fallback">I</span>
+      </div>
+      <!-- <strong>IndusInd Bank</strong> -->
+      <span class="exp-v2-client-products">LAP · HLP</span>
+    </div>
+
+    <div class="exp-v2-client">
+      <div class="exp-v2-client-logo">
+        <img
+          src="assets/bandhan.jpg"
+          alt="Bandhan Bank"
+          loading="lazy"
+          (error)="onLogoError($event)">
+        <span class="exp-v2-logo-fallback">B</span>
+      </div>
+      <!-- <strong>Bandhan Bank</strong> -->
+      <span class="exp-v2-client-products">Personal loans</span>
+    </div>
+
+    <div class="exp-v2-client">
+      <div class="exp-v2-client-logo">
+        <img
+          src="assets/hdfc.png"
+          alt="HDFC Bank"
+          loading="lazy"
+          (error)="onLogoError($event)">
+        <span class="exp-v2-logo-fallback">H</span>
+      </div>
+      <!-- <strong>HDFC Bank</strong> -->
+      <span class="exp-v2-client-products">KCC lending</span>
+    </div>
+
+  </div>
+</div>
+
+
+          <!-- Interactive module explorer -->
+          <div class="exp-v2-explorer">
+
+            <div class="exp-v2-explorer-heading">
+              <div>
+                <span class="exp-v2-kicker">
+                  INTERACTIVE PROJECT EXPLORER
+                </span>
+
+                <h4>Inside the lending platform</h4>
+
+                
+              </div>
+
+              <span class="exp-v2-explorer-count">MODULES</span>
+            </div>
+
+            <div class="exp-v2-module-layout">
+
+              <!-- Left column: module buttons -->
+              <div class="exp-v2-module-nav">
+
+                <button
+                  type="button"
+                  class="exp-v2-module-button"
+                  *ngFor="let module of lentraModules"
+                  [class.active]="selectedLentraModule === module.name"
+                  [style.--module-color]="module.color"
+                  [attr.aria-pressed]="selectedLentraModule === module.name"
+                  (click)="selectLentraModule(module.name)">
+
+                  <span class="exp-v2-module-icon">
+                    {{ module.icon }}
+                  </span>
+
+                  <span class="exp-v2-module-label">
+                    <strong>{{ module.name }}</strong>
+                    <small>{{ module.subtitle }}</small>
+                  </span>
+
+                 
+
+                </button>
+              </div>
+
+              <!-- Right column: exactly one selected module detail -->
+              <ng-container *ngFor="let module of lentraModules">
+
+                <div
+                  class="exp-v2-module-detail"
+                  *ngIf="selectedLentraModule === module.name">
+
+                  <div
+                    class="exp-v2-detail-heading"
+                    [style.--module-color]="module.color">
+
+                  
+
+                    <div>
+                      <h5>{{ module.name }}</h5>
+                      <p>{{ module.subtitle }}</p>
+                    </div>
+
+                  </div>
+
+                  <p class="exp-v2-module-summary">
+                    {{ module.summary }}
+                  </p>
+
+                  <div class="exp-v2-contribution">
+
+                    <div>
+                      <strong>My contribution</strong>
+                      <p>{{ module.contribution }}</p>
+                    </div>
+                  </div>
+
+                  <!-- Feature workflow -->
+                  <div class="exp-v2-flow">
+
+                    <div class="exp-v2-flow-heading">
+                      <strong>Feature flow</strong>
+                      <span>SIMPLIFIED VIEW</span>
+                    </div>
+
+                    <div class="exp-v2-flow-track">
+
+                      <ng-container
+                        *ngFor="let step of module.flow; let last = last">
+
+                        <span class="exp-v2-flow-step">
+                          {{ step }}
+                        </span>
+
+                        <span
+                          class="exp-v2-flow-arrow"
+                          *ngIf="!last">
+                          →
+                        </span>
+
+                      </ng-container>
+
+                    </div>
+                  </div>
+
+                </div>
+
+              </ng-container>
+
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+<!-- FREEMARKER TEMPLATE DEVELOPMENT -->
+<div class="exp-v2-capability exp-v2-freemarker">
+
+  <div class="exp-v2-capability-header">
+    <div class="exp-v2-capability-icon template-icon">
+      <span>&#123; &#125;</span>
+    </div>
+
+    <div class="exp-v2-capability-title">
+      <span class="exp-v2-kicker">TEMPLATE ENGINEERING</span>
+      <h4>FreeMarker Template Development</h4>
+      <p>Bank-specific lending documentation</p>
+    </div>
+
+    <span class="exp-v2-capability-index">02</span>
+  </div>
+
+  <p class="exp-v2-capability-description">
+    Primarily worked on FreeMarker template development for Poonawalla Fincorp,
+    creating and modifying templates for multiple lending products and
+    product-specific requirements.
+  </p>
+
+<div class="exp-v2-template-client">
+  <span class="exp-v2-template-client-label">PRIMARY PROJECT</span>
+
+  <img
+    class="poonawalla-logo"
+    src="./assets/poonawala.svg"
+    alt="Poonawalla Fincorp logo"
+    loading="lazy"
+  />
+</div>
+
+  <div class="exp-v2-template-footer">
+    <span class="exp-v2-kicker">LENDING PRODUCTS</span>
+
+    <div class="exp-v2-template-products">
+      <span>LAP</span>
+      <span>HLP</span>
+      <span>KCC</span>
+      <span>Two-wheeler loans</span>
+    </div>
+  </div>
+
+</div>
+ </ng-container>
+
+     
+<!-- Compact details: show only information not already displayed in the main card -->
+<ng-template #compactExperience>
+
+<!-- LOW-CODE / NO-CODE: LENTRA INTERNSHIP ONLY -->
+<div
+  class="exp-v2-capability exp-v2-lowcode"
+  *ngIf="item.company === 'Lentra' &&
+         item.role === 'Full Stack Developer Intern'">
+
+  <div class="exp-v2-capability-header">
+    <div class="exp-v2-capability-icon lowcode-icon">
+      <span>◈</span>
+    </div>
+
+    <div class="exp-v2-capability-title">
+      <span class="exp-v2-kicker">PLATFORM EXPERIENCE</span>
+      <h4>Design Studio / Workbench</h4>
+      <p>Low-code / no-code platform</p>
+    </div>
+
+    <span class="exp-v2-capability-index">01</span>
+  </div>
+
+  <p class="exp-v2-capability-description">
+    Worked with the Design Studio / Workbench platform to support
+    lending application workflows and platform-related enhancements.
+  </p>
+
+  <div class="exp-v2-capability-tags">
+    <span>Design Studio</span>
+    <span>Workbench</span>
+    <span>Lending Workflows</span>
+  </div>
+
+</div>
+
+ 
+</ng-template>
+
+
+      </div>
+    </article>
+
+  </div>
+</section>
+
+
+
+
+
+    <!-- PROJECTS -->
+    <section class="content-section section-wrap reveal-on-scroll" id="work">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / SELECTED WORK</p>
+          <h2>Projects with<br><span>purpose.</span></h2>
+        </div>
+        <p class="section-intro">
+          A selection of applications exploring full-stack engineering,
+          intuitive interfaces, real-time features, and AI integration.
+        </p>
+      </div>
+
+      <div class="project-filters" aria-label="Filter projects">
+        <button
+          *ngFor="let category of categories"
+          type="button"
+          [class.active]="selectedCategory === category"
+          [attr.aria-pressed]="selectedCategory === category"
+          (click)="setCategory(category)">
+          {{ category }}
+        </button>
+      </div>
+
+      <div class="project-grid">
+       <article
+  class="project-card"
+  *ngFor="let project of filteredProjects"
+  [class.project-featured]="project.featured"
+  [attr.data-accent]="project.accent"
+  [attr.data-project]="project.id"
+  (pointermove)="onProjectPointerMove($event)"
+  (pointerleave)="onProjectPointerLeave($event)"
+>
+
+          <button
+            class="project-open"
+            type="button"
+            (click)="openProject(project)"
+            [attr.aria-label]="'View details for ' + project.name">
+
+            <div class="project-art" [attr.data-accent]="project.accent">
+              <div class="art-topline">
+                <span>PROJECT / {{ project.number }}</span>
+                <span class="art-category">{{ project.category }}</span>
+              </div>
+
+             
+<div class="art-visual project-screenshot" [ngSwitch]="project.id">
+
+  <!-- FoodieHub -->
+  <img
+    *ngSwitchCase="1"
+    src="assets/foodiehub.png"
+    alt="FoodieHub food delivery application homepage"
+    loading="lazy"
+  />
+
+  <!-- TweetBuddy -->
+  <img
+    *ngSwitchCase="2"
+    src="assets/tweetbuddy.jpg"
+    alt="TweetBuddy social networking application homepage"
+    loading="lazy"
+  />
+
+  <!-- Employee Management -->
+  <img
+    *ngSwitchCase="3"
+    src="assets/employee.jpg"
+    alt="Employee Management application"
+    loading="lazy"
+  />
+
+  <!-- Widget Management -->
+  <img
+    *ngSwitchCase="4"
+    src="assets/widget.png"
+    alt="Widget Management dashboard"
+    loading="lazy"
+  />
+
+  <!-- Book Readers -->
+  <img
+    *ngSwitchCase="5"
+    src="assets/readers.jpg"
+    alt="Book Readers website homepage"
+    loading="lazy"
+  />
+
+  <!-- Disease Prediction: retain your custom illustration -->
+  <div *ngSwitchDefault class="prediction-preview">
+    <div class="prediction-ring">
+      <span>DATA<br />INSIGHTS</span>
+    </div>
+    <div class="prediction-label"><i></i> Pattern analysis</div>
+    <div class="prediction-label"><i></i> Model exploration</div>
+  </div>
+
+</div>
+
+              <span class="art-number">{{ project.number }}</span>
+            </div>
+
+            <div class="project-info">
+              <div class="project-title-row">
+                <div>
+                  <p class="project-subtitle">{{ project.subtitle }}</p>
+                  <h3>{{ project.name }}</h3>
+                </div>
+                <!-- <span class="project-arrow">↗</span> -->
+              </div>
+
+              <p class="project-description">{{ project.description }}</p>
+
+            <div class="tech-list">
+  <span
+    class="tech-logo-link"
+    *ngFor="let tech of project.technologies"
+  >
+    <img
+      *ngIf="getTechnology(tech).logo"
+      [src]="getTechnology(tech).logo"
+      [alt]="tech + ' logo'"
+      loading="lazy"
+      (error)="onTechnologyLogoError($event)"
+    />
+
+    <span
+      class="tech-logo-fallback"
+      [style.display]="getTechnology(tech).logo ? 'none' : 'inline-flex'"
+    >
+      {{ tech }}
+    </span>
+  </span>
+</div>
+            </div>
+          </button>
+
+          <div class="project-links">
+            <a *ngIf="project.liveUrl"
+               [href]="project.liveUrl"
+               target="_blank"
+               rel="noopener noreferrer"
+               (click)="$event.stopPropagation()">Live demo ↗</a>
+
+            <a *ngIf="project.githubUrl"
+               [href]="project.githubUrl"
+               target="_blank"
+               rel="noopener noreferrer"
+               (click)="$event.stopPropagation()">Repository ↗</a>
+
+            <button type="button" (click)="openProject(project)">Explore project +</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+
+    <!-- SKILLS -->
+    <section class="content-section section-wrap reveal-on-scroll" id="skills">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">03 / TECHNICAL TOOLKIT</p>
+          <h2>Tools for<br><span>the build.</span></h2>
+        </div>
+        <p class="section-intro">
+          A practical toolkit for building interfaces, implementing
+          APIs, working with data, and shipping applications.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card" *ngFor="let group of skillGroups">
+          <div class="skill-card-top">
+            <span>{{ group.number }} / 04</span>
+            <span class="skill-symbol">✳</span>
+          </div>
+          <h3>{{ group.title }}</h3>
+          <p>{{ group.subtitle }}</p>
+         <div class="skill-tags">
+  <a
+    *ngFor="let skill of group.skills"
+    class="tech-logo-link"
+    [href]="getTechnology(skill).docsUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    [attr.aria-label]="skill + ' official documentation'"
+    [attr.title]="skill + ' — Open documentation'"
+  >
+    <img
+      *ngIf="getTechnology(skill).logo"
+      [src]="getTechnology(skill).logo"
+      [alt]="skill + ' logo'"
+      loading="lazy"
+      (error)="onTechnologyLogoError($event)"
+    />
+
+    <span
+      class="tech-logo-fallback"
+      [style.display]="getTechnology(skill).logo ? 'none' : 'inline-flex'"
+    >
+      {{ skill }}
+    </span>
+  </a>
+</div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="content-section about-section reveal-on-scroll" id="about">
+      <div class="section-wrap about-layout">
+        <div class="about-title">
+          <p class="eyebrow">04 / A LITTLE ABOUT ME</p>
+          <h2>Curious by<br>nature. <span>Developer</span><br>by craft.</h2>
+        </div>
+        <div class="about-copy">
+          <p class="about-lead">
+            I enjoy turning complex requirements into software
+            that feels clear, useful, and dependable.
+          </p>
+          <p>
+            My experience spans enterprise lending workflows and
+            full-stack personal projects. I enjoy understanding how
+            systems work end to end—from data and APIs to the interface
+            people interact with.
+          </p>
+          <div class="education-card">
+            <!-- <span class="education-icon">↗</span> -->
+            <div>
+              <span class="eyebrow">EDUCATION</span>
+              <h3>B.Tech — Information Technology</h3>
+              <p>Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded</p>
+              <span class="education-score">CGPA 7.90 / 10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- CERTIFICATIONS -->
+<section
+  id="certifications"
+  class="certifications-section section-wrap reveal-on-scroll"
+>
+  
+<div class="section-heading">
+  <div class="section-heading">
+  <div class="certification-heading">
+    <div class="certification-heading-content">
+      <span class="section-eyebrow">CONTINUOUS LEARNING</span>
+
+      <h2>
+        Certifications<span class="heading-accent"> & Learning</span>
+      </h2>
+
+      <!-- Add 12+ here, between the heading and description -->
+      <div class="certification-count-inline">
+        <span class="count-divider"></span>
+        <span><strong>12+</strong> Certificates Earned</span>
+        <span class="count-divider"></span>
+      </div>
+
+      <p class="section-description">
+        Skills strengthened through courses, workshops, and technical learning.
+      </p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+  <div class="certifications-grid">
+    <article
+      class="certification-card"
+      *ngFor="let cert of certifications"
+    >
+      <div class="certification-top">
+        <div class="certification-logo">
+          <img
+            *ngIf="cert.logo"
+            [src]="cert.logo"
+            [alt]="cert.provider + ' logo'"
+            loading="lazy"
+            (error)="onTechnologyLogoError($event)"
+          />
+
+          <span
+            class="certification-logo-fallback"
+            [style.display]="cert.logo ? 'none' : 'flex'"
+          >
+            {{ cert.provider.charAt(0) }}
+          </span>
+        </div>
+
+        <span class="certification-category">{{ cert.category }}</span>
+      </div>
+
+      <div class="certification-content">
+        <h3>{{ cert.title }}</h3>
+        <p class="certification-provider">{{ cert.provider }}</p>
+        <p class="certification-date">Issued {{ cert.date }}</p>
+      </div>
+
+      <a
+        *ngIf="cert.url"
+        class="certification-link"
+        [href]="cert.url"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View Certificate
+        <span aria-hidden="true">↗</span>
+      </a>
+
+      <span
+        *ngIf="!cert.url"
+        class="certification-unavailable"
+      >
+        Certificate link unavailable
+      </span>
+    </article>
+  </div>
+</section>
+
+    <!-- AWARDS -->
+    <section class="content-section section-wrap reveal-on-scroll" id="awards">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">05 / RECOGNITION</p>
+          <h2>Work that<br><span>stands out.</span></h2>
+        </div>
+        <p class="section-intro">
+          Recognition for contributions, consistency, and
+          technical learning.
+        </p>
+      </div>
+
+      <div class="awards-list">
+        <article class="award-row" *ngFor="let award of awards">
+          <span class="award-number">{{ award.number }}</span>
+          <div class="award-name"><h3>{{ award.title }}</h3><span>{{ award.source }}</span></div>
+          <span class="award-year">{{ award.year }}</span>
+          <span class="award-star">✳</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact-section reveal-on-scroll" id="contact">
+      <div class="section-wrap contact-inner">
+        <p class="eyebrow"><span class="status-dot"></span> OPEN TO THE RIGHT OPPORTUNITY</p>
+        <h2>Have a good<br>problem to <span>solve?</span></h2>
+        <p>Let's talk about software, ideas, and what we could build together.</p>
+
+        <div class="contact-actions">
+          <a class="button button-primary" [href]="'mailto:' + email">Email me ↗</a>
+          <button class="button button-ghost" type="button" (click)="copyEmail()">
+            {{ copied ? 'Email copied ✓' : 'Copy email ⧉' }}
+          </button>
+        </div>
+
+        <div class="social-links">
+          <a [href]="githubUrl" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          <a [href]="linkedinUrl" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a [href]="portfolioUrl" target="_blank" rel="noopener noreferrer">Portfolio ↗</a>
+          <a *ngIf="resumeUrl !== 'YOUR_RESUME_URL'"
+             [href]="resumeUrl" target="_blank" rel="noopener noreferrer">Resume ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer section-wrap">
+    <a class="brand footer-brand" href="#home">
+      <span class="brand-mark">M.</span>
+      <span class="brand-copy"><strong>MEGHNA BANSOD</strong><small>SOFTWARE DEVELOPER</small></span>
+    </a>
+    <span>Designed with intention. Built with code.</span>
+    <a href="#home">BACK TO TOP ↑</a>
+  </footer>
+</div>
+
+<!-- PROJECT DETAILS MODAL -->
+<div class="modal-backdrop"
+     *ngIf="selectedProject as project"
+     (click)="closeProject()">
+  <section class="project-modal"
+           role="dialog"
+           aria-modal="true"
+           [attr.aria-label]="project.name + ' project details'"
+           (click)="$event.stopPropagation()">
+    <button class="modal-close" type="button" (click)="closeProject()" aria-label="Close project details">×</button>
+    <p class="eyebrow">PROJECT / {{ project.number }} · {{ project.category }}</p>
+    <div class="modal-symbol" [attr.data-accent]="project.accent">{{ project.symbol }}</div>
+    <h2>{{ project.name }}</h2>
+    <p class="modal-subtitle">{{ project.subtitle }}</p>
+    <p class="modal-description">{{ project.description }}</p>
+   <div class="tech-list modal-tech">
+  <a
+    *ngFor="let tech of project.technologies"
+    class="tech-logo-link"
+    [href]="getTechnology(tech).docsUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    [attr.aria-label]="tech + ' official documentation'"
+    [attr.title]="tech + ' — Open documentation'"
+  >
+    <img
+      *ngIf="getTechnology(tech).logo"
+      [src]="getTechnology(tech).logo"
+      [alt]="tech + ' logo'"
+      loading="lazy"
+      (error)="onTechnologyLogoError($event)"
+    />
+
+    <span
+      class="tech-logo-fallback"
+      [style.display]="getTechnology(tech).logo ? 'none' : 'inline-flex'"
+    >
+      {{ tech }}
+    </span>
+  </a>
+</div>
+    <div class="modal-actions">
+      <a *ngIf="project.liveUrl" class="button button-primary"
+         [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">Open live demo ↗</a>
+      <a *ngIf="project.githubUrl" class="button button-ghost"
+         [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+      <span *ngIf="!project.githubUrl" class="repository-note">Repository link coming soon</span>
+    </div>
+  </section>
+</div>
+
+<!-- PORTFOLIO ASSISTANT -->
+<div class="assistant-widget">
+  <section class="assistant-panel" *ngIf="assistantOpen">
+    <div class="assistant-header">
+      <div class="assistant-avatar">M.</div>
+      <div><strong>Portfolio assistant</strong><span><i></i> Here to help</span></div>
+      <button type="button" class="assistant-close" (click)="toggleAssistant()" aria-label="Close assistant">×</button>
+    </div>
+
+    <div class="assistant-body">
+      <p class="assistant-greeting">Hi! 👋 I'm here to help you explore Meghna's portfolio.</p>
+      <div class="assistant-suggestions">
+        <button type="button" (click)="askQuestion('Tell me about your projects')">Projects</button>
+        <button type="button" (click)="askQuestion('Tell me about your Lentra experience')">Experience</button>
+        <button type="button" (click)="askQuestion('What are your technical skills?')">Skills</button>
+        <button type="button" (click)="askQuestion('How can I contact you?')">Contact</button>
+      </div>
+
+      <div class="assistant-answer" *ngIf="answer">
+        <span>ASSISTANT</span>
+        <p>{{ answer }}</p>
+      </div>
+    </div>
+
+    <form class="assistant-form" (ngSubmit)="askQuestion()">
+      <input
+        type="text"
+        name="question"
+        [(ngModel)]="question"
+        placeholder="Ask about my portfolio..."
+        aria-label="Ask about the portfolio">
+      <button type="submit" [disabled]="!question.trim()" aria-label="Send question">↗</button>
+    </form>
+  </section>
+
+  <button class="assistant-launcher"
+          type="button"
+          (click)="toggleAssistant()"
+          [attr.aria-expanded]="assistantOpen">
+    <span class="assistant-launcher-icon">✳</span>
+    <span>{{ assistantOpen ? 'Close assistant' : 'Ask about me' }}</span>
+  </button>
+</div>

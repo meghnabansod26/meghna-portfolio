@@ -1,0 +1,3 @@
+This is a source bundle intended to be copied into an Angular CLI workspace.
+Angular standalone component code targets modern Angular (17+).
+Note: the assistant uses [(ngModel)], so import FormsModule in app.ts.
