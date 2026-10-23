@@ -6639,3 +6639,62 @@
   margin-top: 28px;
   padding-bottom: 16px;
 }
+
+
+
+
+/* Professional Experience: reduce left-side gap only */
+/* Center Professional Experience using the original container width */
+#experience.experience-v2.section-wrap {
+  width: calc(100% - 48px);
+  max-width: 1180px;
+  min-width: 0;
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+/* Keep the content aligned inside the section */
+#experience .exp-v2-hero,
+#experience .exp-v2-timeline {
+  width: 100%;
+  min-width: 0;
+}
+
+/* Restore the original heading and stats layout */
+#experience .exp-v2-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
+  align-items: end;
+  gap: 36px;
+}
+
+@media (max-width: 768px) {
+  #experience.experience-v2.section-wrap {
+    width: calc(100% - 32px);
+    margin-left: 16px;
+  }
+
+  #experience .exp-v2-hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 26px;
+  }
+}
+
+
+/* Experience statistics — keep Full-stack on one line */
+#experience .exp-v2-stats {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  max-width: 720px;
+  gap: 10px;
+}
+
+#experience .exp-v2-stat {
+  min-width: 0;
+  padding-inline: 8px;
+}
+
+#experience .exp-v2-stat strong {
+  font-size: clamp(1rem, 1.5vw, 1.5rem);
+  white-space: nowrap;
+}
