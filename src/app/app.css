@@ -5913,3 +5913,123 @@
   }
 }
 
+
+/* Subtle animated blue atmosphere behind the hero */
+#home {
+  isolation: isolate;
+}
+
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      ellipse at 8% 25%,
+      rgba(53, 126, 225, 0.12),
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 85% 45%,
+      rgba(82, 151, 255, 0.09),
+      transparent 42%
+    );
+  background-size: 140% 140%;
+  animation: hero-atmosphere 18s ease-in-out infinite alternate;
+}
+
+@keyframes hero-atmosphere {
+  from {
+    background-position: 0% 30%;
+  }
+
+  to {
+    background-position: 100% 70%;
+  }
+}
+
+/* Gentle movement for the profile photo card */
+.photo-frame {
+  animation: profile-frame-float 7s ease-in-out infinite;
+  will-change: transform;
+}
+
+@keyframes profile-frame-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+/* Keep the profile still on touch devices */
+@media (hover: none), (pointer: coarse) {
+  .photo-frame {
+    animation: none;
+    will-change: auto;
+  }
+}
+
+/* Refined button interactions */
+.button {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.button-primary:hover {
+  box-shadow: 0 8px 26px rgba(58, 137, 255, 0.23);
+}
+
+.button-ghost:hover {
+  box-shadow: 0 5px 18px rgba(58, 137, 255, 0.08);
+}
+
+.nav-links a.nav-contact:hover {
+  box-shadow: 0 0 18px rgba(83, 153, 255, 0.12);
+}
+
+.nav-links a:focus-visible,
+.button:focus-visible {
+  outline: 2px solid #83baff;
+  outline-offset: 4px;
+}
+
+/* Keep project screenshots at their existing size */
+.project-card:hover .project-art {
+  transform: none;
+}
+
+/* Retain the spotlight without changing card dimensions */
+.project-card::before {
+  pointer-events: none;
+}
+
+#home::before,
+.photo-frame {
+  animation: none !important;
+}
+
+
+/* Soften the hero background glow */
+#home::before {
+  background:
+    radial-gradient(
+      ellipse at 12% 30%,
+      rgba(53, 126, 225, 0.07),
+      transparent 43%
+    ),
+    radial-gradient(
+      ellipse at 85% 42%,
+      rgba(82, 151, 255, 0.06),
+      transparent 40%
+    );
+  background-size: 140% 140%;
+}
