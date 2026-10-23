@@ -506,7 +506,7 @@
       <p>Bank-specific lending documentation</p>
     </div>
 
-    <span class="exp-v2-capability-index">02</span>
+    <!-- <span class="exp-v2-capability-index">01</span> -->
   </div>
 
   <p class="exp-v2-capability-description">
@@ -561,7 +561,7 @@
       <p>Low-code / no-code platform</p>
     </div>
 
-    <span class="exp-v2-capability-index">01</span>
+    <!-- <span class="exp-v2-capability-index">01</span> -->
   </div>
 
   <p class="exp-v2-capability-description">
@@ -603,7 +603,7 @@
       <p>Referral-based business platform</p>
     </div>
 
-    <span class="exp-v2-capability-index">01</span>
+    <!-- <span class="exp-v2-capability-index">01</span> -->
   </div>
 
   <p class="exp-v2-capability-description">
@@ -1202,52 +1202,348 @@
       <span class="brand-copy"><strong>MEGHNA BANSOD</strong><small>SOFTWARE DEVELOPER</small></span>
     </a>
     <span>Designed with intention. Built with code.</span>
-    <a href="#home">BACK TO TOP ↑</a>
-  </footer>
+<a href="#home" class="back-to-top">BACK TO TOP ↑</a>  </footer>
 </div>
 
 
 
-<!-- PORTFOLIO ASSISTANT -->
-<div class="assistant-widget">
-  <section class="assistant-panel" *ngIf="assistantOpen">
-    <div class="assistant-header">
-      <div class="assistant-avatar">M.</div>
-      <div><strong>Portfolio assistant</strong><span><i></i> Here to help</span></div>
-      <button type="button" class="assistant-close" (click)="toggleAssistant()" aria-label="Close assistant">×</button>
+
+<!-- Floating Portfolio Assistant -->
+
+
+<!-- Floating AI Assistant Button -->
+<button
+  *ngIf="!assistantOpen"
+  type="button"
+  class="ai-assistant-launcher"
+  aria-label="Open AI assistant"
+  (click)="assistantOpen = true"
+>
+  <svg
+    viewBox="0 0 24 24"
+    width="28"
+    height="28"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.8"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <rect x="4" y="7" width="16" height="13" rx="4" />
+    <path d="M12 3v4" />
+    <circle cx="9" cy="12" r="0.7" fill="currentColor" />
+    <circle cx="15" cy="12" r="0.7" fill="currentColor" />
+    <path d="M9 16h6M2 11v5M22 11v5" />
+  </svg>
+</button>
+
+<div class="assistant-widget" *ngIf="assistantOpen">
+  <section class="assistant-panel">
+
+    <!-- Header -->
+    <header class="assistant-header">
+      <div class="assistant-status">
+        <span class="assistant-status-dot"></span>
+        <span>MEGHNA · ONLINE</span>
+      </div>
+
+    <button
+  type="button"
+  class="assistant-close"
+  aria-label="Close AI assistant"
+  (click)="assistantOpen = false"
+>
+  &times;
+</button>
+    
+    </header>
+
+    <!-- Introduction -->
+    <div class="assistant-intro">
+      <div class="assistant-avatar">&lt;/&gt;</div>
+      <span class="assistant-eyebrow">INTERACTIVE DEVELOPER PROFILE</span>
+      <h3>Explore My Portfolio</h3>
+      <p>
+        Curious about my work? Discover my experience, projects,
+        technical skills, education, and professional journey.
+      </p>
     </div>
 
+    <!-- Quick actions -->
     <div class="assistant-body">
-      <p class="assistant-greeting">Hi! 👋 I'm here to help you explore Meghna's portfolio.</p>
+      <span class="assistant-section-label">EXPLORE MY PROFILE</span>
+
       <div class="assistant-suggestions">
-        <button type="button" (click)="askQuestion('Tell me about your projects')">Projects</button>
-        <button type="button" (click)="askQuestion('Tell me about your Lentra experience')">Experience</button>
-        <button type="button" (click)="askQuestion('What are your technical skills?')">Skills</button>
-        <button type="button" (click)="askQuestion('How can I contact you?')">Contact</button>
+        <button type="button" (click)="askQuestion('Show my resume')">
+          <span class="suggestion-icon resume-icon">📄</span>
+          <span>Resume</span>
+        </button>
+
+        <button type="button" (click)="askQuestion('Tell me about my experience')">
+          <span class="suggestion-icon experience-icon">💼</span>
+          <span>Experience</span>
+        </button>
+
+        <button type="button" (click)="askQuestion('Tell me about my projects')">
+          <span class="suggestion-icon project-icon">🚀</span>
+          <span>Projects</span>
+        </button>
+
+        <button type="button" (click)="askQuestion('What are my technical skills?')">
+          <span class="suggestion-icon skills-icon">⚡</span>
+          <span>Skills</span>
+        </button>
+
+        <button type="button" (click)="askQuestion('Tell me about my education')">
+          <span class="suggestion-icon education-icon">🎓</span>
+          <span>Education</span>
+        </button>
+
+        <!-- <button type="button" (click)="askQuestion('Tell me about my achievements')">
+          <span class="suggestion-icon awards-icon">🏆</span>
+          <span>Achievements</span>
+        </button> -->
+
+        <button type="button" (click)="askQuestion('How can I contact you?')">
+          <span class="suggestion-icon contact-icon">✉️</span>
+          <span>Contact</span>
+        </button>
       </div>
 
-      <div class="assistant-answer" *ngIf="answer">
-        <span>ASSISTANT</span>
-        <p>{{ answer }}</p>
+      <!-- Dynamic answer layouts -->
+      <div
+        class="assistant-answer"
+        *ngIf="answerItems.length"
+        [ngSwitch]="answerType">
+
+        <!-- RESUME -->
+        <div *ngSwitchCase="'resume'" class="answer-resume">
+          <div class="resume-preview-icon">📄</div>
+          <span class="answer-eyebrow">CAREER PROFILE</span>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div class="resume-info">
+            <strong>Meghna Bansod</strong>
+            <span>Software Developer</span>
+            <div class="resume-tags">
+              <span>Java</span>
+              <span>Spring Boot</span>
+              <span>Angular</span>
+            </div>
+          </div>
+
+          <a
+            class="resume-action"
+            [href]="resumeUrl"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span>📂</span>
+            <span>View My Resume</span>
+            <span class="resume-action-symbol">↗</span>
+          </a>
+        </div>
+
+        <!-- EXPERIENCE TIMELINE -->
+        <div *ngSwitchCase="'experience'" class="answer-experience">
+          <div class="answer-eyebrow">💼 MY JOURNEY</div>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div class="experience-timeline">
+            <div
+              class="experience-entry"
+              *ngFor="let item of answerItems">
+
+              <span class="timeline-icon">{{ item.icon }}</span>
+              <div class="experience-entry-content">
+                <strong>{{ item.title }}</strong>
+                <p>{{ item.detail }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROJECT SHOWCASE -->
+        <div *ngSwitchCase="'projects'" class="answer-projects">
+          <div class="answer-eyebrow">🚀 THINGS I'VE BUILT</div>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div
+            class="project-showcase"
+            *ngFor="let item of answerItems">
+
+            <div class="project-topline">
+              <span class="project-symbol">{{ item.icon }}</span>
+              <span class="project-status">PROJECT</span>
+            </div>
+
+            <h4>{{ item.title }}</h4>
+            <p>{{ item.detail }}</p>
+          </div>
+        </div>
+
+        <!-- TECHNICAL SKILLS -->
+        <div *ngSwitchCase="'skills'" class="answer-skills">
+          <div class="answer-eyebrow">⚡ TECHNOLOGY STACK</div>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div
+            class="skill-category"
+            *ngFor="let item of answerItems">
+
+            <span class="skill-category-icon">{{ item.icon }}</span>
+
+            <div class="skill-category-content">
+              <strong>{{ item.title }}</strong>
+
+              <div class="skill-tags">
+                <span *ngFor="let skill of item.detail.split(' · ')">
+                  {{ skill }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- EDUCATION PROFILE -->
+        <div *ngSwitchCase="'education'" class="answer-education">
+          <div class="education-emblem">🎓</div>
+          <span class="answer-eyebrow">ACADEMIC PROFILE</span>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div class="education-details">
+            <div *ngFor="let item of answerItems">
+              <span>{{ item.icon }} {{ item.title }}</span>
+              <strong>{{ item.detail }}</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- ACHIEVEMENTS -->
+        <!-- <div *ngSwitchCase="'achievements'" class="answer-achievements">
+          <div class="answer-eyebrow">🏆 MILESTONES</div>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div
+            class="achievement-row"
+            *ngFor="let item of answerItems">
+
+            <span class="achievement-medal">{{ item.icon }}</span>
+
+            <div class="achievement-content">
+              <strong>{{ item.title }}</strong>
+              <p>{{ item.detail }}</p>
+            </div>
+
+            <span class="achievement-star">✦</span>
+          </div>
+        </div> -->
+
+        <!-- CONTACT -->
+        <div *ngSwitchCase="'contact'" class="answer-contact">
+          <div class="contact-orbit">✉</div>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div
+            class="contact-method"
+            *ngFor="let item of answerItems">
+
+            <span class="contact-method-icon">{{ item.icon }}</span>
+            <div>
+              <strong>{{ item.title }}</strong>
+              <p>{{ item.detail }}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- DEFAULT / ABOUT ME -->
+        <div *ngSwitchDefault class="answer-default">
+          <span class="answer-eyebrow">✦ PORTFOLIO ASSISTANT</span>
+          <h3>{{ answerTitle }}</h3>
+          <p class="answer-intro">{{ answerIntro }}</p>
+
+          <div class="default-tags">
+            <span *ngFor="let item of answerItems">
+              {{ item.icon }} {{ item.title }}
+            </span>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <form class="assistant-form" (ngSubmit)="askQuestion()">
-      <input
-        type="text"
-        name="question"
-        [(ngModel)]="question"
-        placeholder="Ask about my portfolio..."
-        aria-label="Ask about the portfolio">
-      <button type="submit" [disabled]="!question.trim()" aria-label="Send question">↗</button>
-    </form>
-  </section>
+    <!-- Question input -->
+    
+<form class="assistant-form" (ngSubmit)="askQuestion()">
+<input
+  type="text"
+  name="question"
+  [(ngModel)]="question"
+  [placeholder]="isListening ? 'Listening... Speak your question...' : 'Ask me anything...'"
+  aria-label="Ask about my portfolio"
+  autocomplete="off"
+  required
+/>
 
-  <button class="assistant-launcher"
-          type="button"
-          (click)="toggleAssistant()"
-          [attr.aria-expanded]="assistantOpen">
-    <span class="assistant-launcher-icon">✳</span>
-    <span>{{ assistantOpen ? 'Close assistant' : 'Ask about me' }}</span>
+ <button
+  type="button"
+  class="assistant-mic-button"
+  [class.listening]="isListening"
+  (click)="toggleVoiceInput()"
+  [attr.aria-label]="isListening ? 'Stop voice input' : 'Start voice input'">
+
+  <svg *ngIf="!isListening"
+       viewBox="0 0 24 24"
+       width="20"
+       height="20"
+       fill="none"
+       stroke="currentColor"
+       stroke-width="1.8"
+       stroke-linecap="round"
+       stroke-linejoin="round">
+    <rect x="9" y="2" width="6" height="12" rx="3"/>
+    <path d="M5 10v2a7 7 0 0 0 14 0v-2"/>
+    <path d="M12 19v3M8 22h8"/>
+  </svg>
+
+  <svg *ngIf="isListening"
+       class="voice-wave"
+       viewBox="0 0 24 24"
+       width="22"
+       height="22"
+       fill="currentColor"
+       aria-hidden="true">
+    <rect x="2" y="9" width="3" height="6" rx="1.5"/>
+    <rect x="7" y="5" width="3" height="14" rx="1.5"/>
+    <rect x="12" y="2" width="3" height="20" rx="1.5"/>
+    <rect x="17" y="7" width="3" height="10" rx="1.5"/>
+    <rect x="22" y="10" width="2" height="4" rx="1"/>
+  </svg>
+</button>
+
+  <button
+    type="submit"
+    class="assistant-send-button"
+    aria-label="Send question"
+    [disabled]="!question.trim()">
+    ➜
   </button>
+</form>
+
+
+
+    <!-- Footer -->
+    <footer class="assistant-card-footer">
+      <span>BUILD · CODE · CREATE</span>
+      <span>MEGHNA / AI</span>
+    </footer>
+
+  </section>
 </div>

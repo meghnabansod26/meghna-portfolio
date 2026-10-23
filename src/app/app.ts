@@ -40,16 +40,35 @@ interface Project {
 })
 export class AppComponent implements AfterViewInit, OnDestroy {
   private revealObserver?: IntersectionObserver;
-private revealRefreshFrame = 0;
-private destroyed = false;
+  private revealRefreshFrame = 0;
+  private destroyed = false;
   menuOpen = false;
   selectedCategory: ProjectCategory = 'All';
   selectedProject: Project | null = null;
-  assistantOpen = false;
-  question = '';
+  assistantQuestion = '';
+  assistantAnswer = '';
+  private assistantTimer?: ReturnType<typeof setTimeout>;
+  private assistantDismissed = false;
   answer = '';
   copied = false;
   private copyTimer?: ReturnType<typeof setTimeout>;
+  assistantOpen = false;
+  question = '';
+  answerType = 'default';
+  answerTitle = '';
+  answerIntro = '';
+  answerItems: {
+    icon: string;
+    color: string;
+    title: string;
+    detail: string;
+  }[] = [];
+
+isListening = false;
+voiceStatus = '';
+
+private recognition: any = null;
+
 
   readonly email = 'meghnabansod26@gmail.com';
   readonly resumeUrl = 'https://drive.google.com/file/d/1vCWmmLCfYJEdB0x9h5mrQO9-bx3mL6-A/view?usp=sharing';
@@ -719,33 +738,418 @@ certifications = [
     this.menuOpen = false;
   }
 
-  toggleAssistant(): void {
-    this.assistantOpen = !this.assistantOpen;
-  }
+toggleAssistant(): void {
+  if (this.assistantOpen) {
+    this.assistantOpen = false;
 
-  askQuestion(question?: string): void {
-    const q = (question || this.question).trim();
-    if (!q) return;
-
-    const text = q.toLowerCase();
-    this.question = '';
-
-    if (text.includes('project') || text.includes('foodie') || text.includes('tweet')) {
-      this.answer = 'My projects include FoodieHub, a full-stack food delivery application with AI recommendations and payment integration; TweetBuddy, a real-time social networking app; and Angular projects including Employee Management and Widget Management.';
-    } else if (text.includes('experience') || text.includes('lentra') || text.includes('work')) {
-      this.answer = 'I worked as an Associate Software Developer at Lentra on enterprise lending platforms, including LOS and LMS workflows. My work involved Java, Spring Boot REST APIs, integrations, and banking workflows.';
-    } else if (text.includes('skill') || text.includes('technology') || text.includes('stack')) {
-      this.answer = 'My core skills include Java, Spring Boot, REST APIs, Angular, TypeScript, JavaScript, SQL, MongoDB, React, Git, and AWS S3.';
-    } else if (text.includes('education') || text.includes('degree') || text.includes('college')) {
-      this.answer = 'I completed my B.Tech in Information Technology from Shri Guru Gobind Singhji Institute of Engineering and Technology (SGGSIE&T), Nanded, with a CGPA of 7.90/10.';
-    } else if (text.includes('award') || text.includes('achievement')) {
-      this.answer = 'My recognitions include the Lentra Top Performer of the Year award in 2024, Extra Miler awards in 2023 and 2024, and a HackerRank Gold Badge in Java.';
-    } else if (text.includes('contact') || text.includes('email') || text.includes('hire')) {
-      this.answer = `You can reach me at ${this.email} or connect through LinkedIn and GitHub using the links on this page.`;
-    } else {
-      this.answer = 'Ask me about my experience, projects, technical skills, education, awards, or contact details.';
+    if (this.assistantTimer) {
+      clearTimeout(this.assistantTimer);
     }
+
+    this.assistantTimer = setTimeout(() => {
+      this.assistantOpen = true;
+    }, 1500);
   }
+}
+
+
+
+
+askQuestion(question?: string): void {
+  const q = (question || this.question).trim().toLowerCase();
+
+  if (!q) return;
+
+  this.question = '';
+  this.answerItems = [];
+
+  // RESUME
+  if (
+    q.includes('resume') ||
+    q.includes('cv') ||
+    q.includes('curriculum vitae')
+  ) {
+    this.answerType = 'resume';
+    this.answerTitle = 'My Resume';
+    this.answerIntro =
+      'Explore my professional profile, technical skills and projects.';
+    this.answerItems = [
+      {
+        icon: '📄',
+        color: 'mint',
+        title: 'Software Developer',
+        detail: 'Professional experience and technical projects.'
+      }
+    ];
+
+  // EXPERIENCE AT ANKA / REFEREDGE
+  } else if (
+    q.includes('anka') ||
+    q.includes('referedge')
+  ) {
+    this.answerType = 'experience';
+    this.answerTitle = 'Anka Technology Solutions';
+    this.answerIntro =
+      'My experience working on Referedge, an Angular-based product.';
+
+    this.answerItems = [
+      {
+        icon: '🏢',
+        color: 'mint',
+        title: 'Anka Technology Solutions',
+        detail: 'Software development experience.'
+      },
+      {
+        icon: '🎨',
+        color: 'violet',
+        title: 'Referedge',
+        detail: 'An Angular-based product.'
+      },
+      {
+        icon: '⚡',
+        color: 'blue',
+        title: 'Frontend Development',
+        detail: 'Worked with Angular to build product features.'
+      }
+    ];
+
+  // PROJECTS
+  } else if (
+    q.includes('project') ||
+    q.includes('foodie') ||
+    q.includes('tweet')
+  ) {
+    this.answerType = 'projects';
+    this.answerTitle = 'Projects & Creations';
+    this.answerIntro =
+      'Applications I have developed using modern technologies.';
+
+    this.answerItems = [
+      {
+        icon: '🍔',
+        color: 'mint',
+        title: 'FoodieHub',
+        detail:
+          'Full-stack food delivery with AI recommendations and payment integration.'
+      },
+      {
+        icon: '💬',
+        color: 'violet',
+        title: 'TweetBuddy',
+        detail:
+          'Real-time social networking using Next.js, Node.js, MongoDB and Socket.io.'
+      },
+      {
+        icon: '⚡',
+        color: 'blue',
+        title: 'Angular Applications',
+        detail:
+          'Employee Management and Widget Management applications.'
+      }
+    ];
+
+  // EXPERIENCE
+  } else if (
+    q.includes('experience') ||
+    q.includes('lentra') ||
+    q.includes('work') ||
+    q.includes('career')
+  ) {
+    this.answerType = 'experience';
+    this.answerTitle = 'Professional Experience';
+    this.answerIntro =
+      'My journey building enterprise software and banking applications.';
+
+    this.answerItems = [
+      {
+        icon: '💼',
+        color: 'mint',
+        title: 'Associate Software Developer · Lentra',
+        detail:
+          'Contributed to enterprise lending applications and banking workflows.'
+      },
+      {
+        icon: '☕',
+        color: 'amber',
+        title: 'Backend Development',
+        detail:
+          'Java, Spring Boot, REST APIs and application integrations.'
+      },
+      {
+        icon: '🏦',
+        color: 'blue',
+        title: 'Product Domain',
+        detail:
+          'Loan Origination System (LOS), Loan Management System (LMS) and banking integrations.'
+      }
+    ];
+
+  // SKILLS
+  } else if (
+    q.includes('skill') ||
+    q.includes('technology') ||
+    q.includes('technologies') ||
+    q.includes('stack')
+  ) {
+    this.answerType = 'skills';
+    this.answerTitle = 'My Technical Toolkit';
+    this.answerIntro =
+      'Technologies I use across the development lifecycle.';
+
+    this.answerItems = [
+      {
+        icon: '☕',
+        color: 'amber',
+        title: 'Backend',
+        detail: 'Java · Spring Boot · REST APIs'
+      },
+      {
+        icon: '🎨',
+        color: 'violet',
+        title: 'Frontend',
+        detail: 'Angular · TypeScript · JavaScript · React'
+      },
+      {
+        icon: '🗄️',
+        color: 'blue',
+        title: 'Databases',
+        detail: 'SQL · MySQL · MongoDB'
+      },
+      {
+        icon: '☁️',
+        color: 'mint',
+        title: 'Tools & Cloud',
+        detail: 'Git · GitHub · AWS S3'
+      }
+    ];
+
+  // EDUCATION
+  } else if (
+    q.includes('education') ||
+    q.includes('degree') ||
+    q.includes('college') ||
+    q.includes('qualification')
+  ) {
+    this.answerType = 'education';
+    this.answerTitle = 'Education';
+    this.answerIntro =
+      'My academic foundation in Information Technology.';
+
+    this.answerItems = [
+      {
+        icon: '🎓',
+        color: 'violet',
+        title: 'Degree',
+        detail: 'B.Tech in Information Technology'
+      },
+      {
+        icon: '🏛️',
+        color: 'blue',
+        title: 'Institution',
+        detail:
+          'SGGSIE&T, Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded.'
+      },
+      {
+        icon: '⭐',
+        color: 'amber',
+        title: 'CGPA',
+        detail: '7.90 / 10'
+      }
+    ];
+
+  // ACHIEVEMENTS
+  } else if (
+    q.includes('award') ||
+    q.includes('achievement') ||
+    q.includes('recognition')
+  ) {
+    this.answerType = 'achievements';
+    this.answerTitle = 'Achievements';
+    this.answerIntro =
+      'Recognition for my work and technical skills.';
+
+    this.answerItems = [
+      {
+        icon: '🏆',
+        color: 'amber',
+        title: 'Top Performer of the Year',
+        detail: 'Lentra · 2024'
+      },
+      {
+        icon: '🌟',
+        color: 'mint',
+        title: 'Extra Miler Award',
+        detail: '2023 and 2024'
+      },
+      {
+        icon: '💻',
+        color: 'blue',
+        title: 'HackerRank',
+        detail: 'Gold Badge in Java'
+      }
+    ];
+
+  // CONTACT
+  } else if (
+    q.includes('contact') ||
+    q.includes('email') ||
+    q.includes('hire') ||
+    q.includes('reach') ||
+    q.includes('connect')
+  ) {
+    this.answerType = 'contact';
+    this.answerTitle = 'Let’s Connect';
+    this.answerIntro =
+      'I’d love to hear about interesting software development opportunities.';
+
+    this.answerItems = [
+      {
+        icon: '✉️',
+        color: 'mint',
+        title: 'Email',
+        detail: this.email
+      },
+      {
+        icon: '💼',
+        color: 'blue',
+        title: 'LinkedIn',
+        detail: 'Connect through my LinkedIn profile.'
+      },
+      {
+        icon: '💻',
+        color: 'violet',
+        title: 'GitHub',
+        detail: 'Explore my repositories and projects.'
+      }
+    ];
+
+  // ABOUT ME / PORTFOLIO
+  } else if (
+    q.includes('portfolio') ||
+    q.includes('about yourself') ||
+    q.includes('about me') ||
+    q.includes('introduce yourself')
+  ) {
+    this.answerType = 'default';
+    this.answerTitle = 'A Little About Me';
+    this.answerIntro =
+      'I am a Software Developer with experience building web applications and enterprise software.';
+
+    this.answerItems = [
+      {
+        icon: '💼',
+        color: 'mint',
+        title: 'Experience',
+        detail: 'Professional software development at Lentra and Anka.'
+      },
+      {
+        icon: '💻',
+        color: 'blue',
+        title: 'Technical Focus',
+        detail: 'Java · Spring Boot · Angular · REST APIs'
+      },
+      {
+        icon: '🚀',
+        color: 'violet',
+        title: 'Projects',
+        detail: 'FoodieHub · TweetBuddy · Angular applications'
+      }
+    ];
+
+  // DEFAULT
+  } else {
+    this.answerType = 'default';
+    this.answerTitle = 'Let’s Explore';
+    this.answerIntro =
+      'Ask me about my experience, projects, skills, education, resume or achievements.';
+
+    this.answerItems = [
+      {
+        icon: '💼',
+        color: 'mint',
+        title: 'Experience',
+        detail: 'My professional journey.'
+      },
+      {
+        icon: '🚀',
+        color: 'violet',
+        title: 'Projects',
+        detail: 'Applications I have built.'
+      },
+      {
+        icon: '📄',
+        color: 'blue',
+        title: 'Resume',
+        detail: 'Explore my professional profile.'
+      }
+    ];
+  }
+}
+
+
+toggleVoiceInput(): void {
+  const browserWindow = window as any;
+  const SpeechRecognition =
+    browserWindow.SpeechRecognition ||
+    browserWindow.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    this.voiceStatus =
+      'Voice input is not supported in this browser. Try the latest Chrome.';
+    return;
+  }
+
+  if (this.isListening && this.recognition) {
+    this.recognition.stop();
+    return;
+  }
+
+  this.recognition = new SpeechRecognition();
+  this.recognition.lang = 'en-IN';
+  this.recognition.continuous = false;
+  this.recognition.interimResults = true;
+
+  this.recognition.onstart = () => {
+    this.isListening = true;
+    this.voiceStatus = 'Listening… Speak your question.';
+  };
+
+  this.recognition.onresult = (event: any) => {
+    let transcript = '';
+
+    for (
+      let i = event.resultIndex;
+      i < event.results.length;
+      i++
+    ) {
+      transcript += event.results[i][0].transcript;
+    }
+
+    this.question = transcript.trim();
+  };
+
+  this.recognition.onerror = (event: any) => {
+    this.isListening = false;
+
+    this.voiceStatus =
+      event.error === 'not-allowed'
+        ? 'Microphone access denied. Allow microphone access in your browser.'
+        : 'Could not capture your voice. Please try again.';
+  };
+
+  this.recognition.onend = () => {
+    this.isListening = false;
+
+    if (this.question.trim()) {
+      this.voiceStatus = 'Voice captured. Press send to ask.';
+    } else if (!this.voiceStatus.includes('denied')) {
+      this.voiceStatus = '';
+    }
+  };
+
+  this.recognition.start();
+}
+
 
   async copyEmail(): Promise<void> {
     try {
@@ -783,6 +1187,14 @@ onDocumentMouseMove(event: MouseEvent): void {
  * Reveal content as it enters the viewport.
  */
 ngAfterViewInit(): void {
+   // Show assistant after 2.5 seconds
+  if (this.assistantTimer) {
+    clearTimeout(this.assistantTimer);
+  }
+
+  this.assistantTimer = setTimeout(() => {
+    this.assistantOpen = true;
+  }, 2000);
   if (
     typeof IntersectionObserver === 'undefined' ||
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
