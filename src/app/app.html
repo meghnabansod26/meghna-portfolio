@@ -22,14 +22,66 @@
       <span></span><span></span>
     </button>
 
-    <nav class="nav-links" [class.nav-open]="menuOpen">
-      <a href="#work" (click)="closeMenu()">Work </a>
-      <a href="#experience" (click)="closeMenu()">Experience </a>
-      <a href="#skills" (click)="closeMenu()">Skills </a>
-      <a href="#about" (click)="closeMenu()">About </a>
-      <a href="#certifications" (click)="closeMenu()">Certifications</a>
-      <a class="nav-contact" href="#contact" (click)="closeMenu()">Let's talk ↗</a>
-    </nav>
+    
+<nav class="nav-links" [class.nav-open]="menuOpen">
+  <a href="#home" (click)="closeMenu()">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="m3 10 9-7 9 7" />
+      <path d="M5 9v11h14V9M9 20v-7h6v7" />
+    </svg>
+    <span>Home</span>
+  </a>
+
+  <a href="#experience" (click)="closeMenu()">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="3" y="7" width="18" height="13" rx="2" />
+      <path d="M9 7V4h6v3M3 12h18M10 12v2h4v-2" />
+    </svg>
+    <span>Experience</span>
+  </a>
+
+  <a href="#work" (click)="closeMenu()">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="m9 9-3 3 3 3M15 9l3 3-3 3M13 8l-2 8" />
+    </svg>
+    <span>Projects</span>
+  </a>
+
+  <a href="#skills" (click)="closeMenu()">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <path d="m12 3 2.2 2.2 3.1-.2.8 3 2.5 1.8-1 2.9 1 2.9-2.5 1.8-.8 3-3.1-.2L12 22l-2.2-2.2-3.1.2-.8-3-2.5-1.8 1-2.9-1-2.9 2.5-1.8.8-3 3.1.2L12 3Z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+    <span>Skills</span>
+  </a>
+
+  <a href="#about" (click)="closeMenu()">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21v-2a8 8 0 0 1 16 0v2" />
+    </svg>
+    <span>About</span>
+  </a>
+
+  <a href="#certifications" (click)="closeMenu()">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <circle cx="12" cy="8" r="5" />
+      <path d="m8 12-1 9 5-3 5 3-1-9M10 8l1.3 1.3L14 7" />
+    </svg>
+    <span>Certifications</span>
+  </a>
+
+  <a class="nav-contact" href="#contact" (click)="closeMenu()">
+    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </svg>
+    <span>Let's talk</span>
+    <span class="nav-arrow">↗</span>
+  </a>
+</nav>
+
   </header>
 
   <main>
@@ -48,8 +100,11 @@
         </p>
 
         <div class="hero-actions">
-          <a class="button button-primary" href="#work">Explore my work <span>↘</span></a>
-          <a class="button button-ghost" href="#contact">Let's connect <span>↗</span></a>
+          <!-- <a class="button button-primary" href="#work">Explore my work <span>↘</span></a> -->
+          <!-- <a class="button button-ghost" href="#contact">Let's connect <span>↗</span></a> -->
+
+          <a class="button button-primary" href="#work">Explore my work</a>
+          <a class="button button-ghost" href="#contact">Let's connect</a>
         </div>
 
         <div class="hero-meta">
@@ -513,162 +568,206 @@
 
 
     <!-- PROJECTS -->
-    <section class="content-section section-wrap reveal-on-scroll" id="work">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">01 / SELECTED WORK</p>
-          <h2>Projects with<br><span>purpose.</span></h2>
-        </div>
-        <p class="section-intro">
-          A selection of applications exploring full-stack engineering,
-          intuitive interfaces, real-time features, and AI integration.
-        </p>
-      </div>
 
-      <div class="project-filters" aria-label="Filter projects">
-        <button
-          *ngFor="let category of categories"
-          type="button"
-          [class.active]="selectedCategory === category"
-          [attr.aria-pressed]="selectedCategory === category"
-          (click)="setCategory(category)">
-          {{ category }}
-        </button>
-      </div>
-
-      <div class="project-grid">
-       <article
-  class="project-card"
-  *ngFor="let project of filteredProjects"
-  [class.project-featured]="project.featured"
-  [attr.data-accent]="project.accent"
-  [attr.data-project]="project.id"
-  (pointermove)="onProjectPointerMove($event)"
-  (pointerleave)="onProjectPointerLeave($event)"
+<section
+  class="content-section section-wrap reveal-on-scroll"
+  id="work"
 >
-
-          <button
-            class="project-open"
-            type="button"
-            (click)="openProject(project)"
-            [attr.aria-label]="'View details for ' + project.name">
-
-            <div class="project-art" [attr.data-accent]="project.accent">
-              <div class="art-topline">
-                <span>PROJECT / {{ project.number }}</span>
-                <span class="art-category">{{ project.category }}</span>
-              </div>
-
-             
-<div class="art-visual project-screenshot" [ngSwitch]="project.id">
-
-  <!-- FoodieHub -->
-  <img
-    *ngSwitchCase="1"
-    src="assets/foodiehub.png"
-    alt="FoodieHub food delivery application homepage"
-    loading="lazy"
-  />
-
-  <!-- TweetBuddy -->
-  <img
-    *ngSwitchCase="2"
-    src="assets/tweetbuddy.jpg"
-    alt="TweetBuddy social networking application homepage"
-    loading="lazy"
-  />
-
-  <!-- Employee Management -->
-  <img
-    *ngSwitchCase="3"
-    src="assets/employee.jpg"
-    alt="Employee Management application"
-    loading="lazy"
-  />
-
-  <!-- Widget Management -->
-  <img
-    *ngSwitchCase="4"
-    src="assets/widget.png"
-    alt="Widget Management dashboard"
-    loading="lazy"
-  />
-
-  <!-- Book Readers -->
-  <img
-    *ngSwitchCase="5"
-    src="assets/readers.jpg"
-    alt="Book Readers website homepage"
-    loading="lazy"
-  />
-
-  <!-- Disease Prediction: retain your custom illustration -->
-  <div *ngSwitchDefault class="prediction-preview">
-    <div class="prediction-ring">
-      <span>DATA<br />INSIGHTS</span>
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">01 / SELECTED WORK</p>
+      <h2>Projects with<br /><span>purpose.</span></h2>
     </div>
-    <div class="prediction-label"><i></i> Pattern analysis</div>
-    <div class="prediction-label"><i></i> Model exploration</div>
+
+    <p class="section-intro">
+      A selection of applications exploring full-stack engineering,
+      intuitive interfaces, real-time features, and AI integration.
+    </p>
   </div>
 
-</div>
+  <!-- CATEGORY FILTERS -->
+  <div class="project-filters" aria-label="Filter projects">
+    <button
+      *ngFor="let category of categories"
+      type="button"
+      [class.active]="selectedCategory === category"
+      [attr.aria-pressed]="selectedCategory === category"
+      (click)="setCategory(category)"
+    >
+      {{ category }}
+    </button>
+  </div>
 
-              <span class="art-number">{{ project.number }}</span>
-            </div>
+  <!-- PROJECT GRID -->
+  <div class="project-grid">
+    <article
+      class="project-card"
+      *ngFor="let project of filteredProjects"
+      [class.project-featured]="project.featured"
+      [attr.data-accent]="project.accent"
+      [attr.data-project]="project.id"
+      (pointermove)="onProjectPointerMove($event)"
+      (pointerleave)="onProjectPointerLeave($event)"
+    >
+      <!-- PROJECT SCREENSHOT -->
+      <button
+        class="project-open"
+        type="button"
+        (click)="openProject(project)"
+        [attr.aria-label]="'Explore ' + project.name"
+      >
+        <div
+          class="project-art"
+          [attr.data-accent]="project.accent"
+        >
+          <div class="art-topline">
+            <span>PROJECT / {{ project.number }}</span>
+            <span class="art-category">
+              {{ project.category }}
+            </span>
+          </div>
 
-            <div class="project-info">
-              <div class="project-title-row">
-                <div>
-                  <p class="project-subtitle">{{ project.subtitle }}</p>
-                  <h3>{{ project.name }}</h3>
-                </div>
-                <!-- <span class="project-arrow">↗</span> -->
+          <div
+            class="art-visual project-screenshot"
+            [ngSwitch]="project.id"
+          >
+            <img
+              *ngSwitchCase="1"
+              src="assets/foodiehub.png"
+              alt="FoodieHub food delivery application"
+              loading="lazy"
+            />
+
+            <img
+              *ngSwitchCase="2"
+              src="assets/tweetbuddy.jpg"
+              alt="TweetBuddy social networking application"
+              loading="lazy"
+            />
+
+            <img
+              *ngSwitchCase="3"
+              src="assets/employee.jpg"
+              alt="Employee Management application"
+              loading="lazy"
+            />
+
+            <img
+              *ngSwitchCase="4"
+              src="assets/widget.png"
+              alt="Widget Management dashboard"
+              loading="lazy"
+            />
+
+            <img
+              *ngSwitchCase="5"
+              src="assets/readers.jpg"
+              alt="Readers Website"
+              loading="lazy"
+            />
+
+            <div
+              *ngSwitchDefault
+              class="prediction-preview"
+            >
+              <div class="prediction-ring">
+                <span>DATA<br />INSIGHTS</span>
               </div>
 
-              <p class="project-description">{{ project.description }}</p>
+              <div class="prediction-label">
+                <i></i>
+                Pattern analysis
+              </div>
 
-            <div class="tech-list">
-  <span
-    class="tech-logo-link"
-    *ngFor="let tech of project.technologies"
-  >
-    <img
-      *ngIf="getTechnology(tech).logo"
-      [src]="getTechnology(tech).logo"
-      [alt]="tech + ' logo'"
-      loading="lazy"
-      (error)="onTechnologyLogoError($event)"
-    />
-
-    <span
-      class="tech-logo-fallback"
-      [style.display]="getTechnology(tech).logo ? 'none' : 'inline-flex'"
-    >
-      {{ tech }}
-    </span>
-  </span>
-</div>
+              <div class="prediction-label">
+                <i></i>
+                Model exploration
+              </div>
             </div>
-          </button>
-
-          <div class="project-links">
-            <a *ngIf="project.liveUrl"
-               [href]="project.liveUrl"
-               target="_blank"
-               rel="noopener noreferrer"
-               (click)="$event.stopPropagation()">Live demo ↗</a>
-
-            <a *ngIf="project.githubUrl"
-               [href]="project.githubUrl"
-               target="_blank"
-               rel="noopener noreferrer"
-               (click)="$event.stopPropagation()">Repository ↗</a>
-
-            <button type="button" (click)="openProject(project)">Explore project +</button>
           </div>
-        </article>
-      </div>
-    </section>
+
+          <span class="art-number">
+            {{ project.number }}
+          </span>
+        </div>
+
+        <!-- PROJECT INFORMATION -->
+        <div class="project-info">
+          <div class="project-title-row">
+            <div>
+              <p class="project-subtitle">
+                {{ project.subtitle }}
+              </p>
+              <h3>{{ project.name }}</h3>
+            </div>
+          </div>
+
+          <p class="project-description">
+            {{ project.description }}
+          </p>
+
+          <!-- TECHNOLOGY LOGOS -->
+          <div class="tech-list">
+            <span
+              class="tech-logo-link"
+              *ngFor="let tech of project.technologies"
+              [title]="tech"
+            >
+              <img
+                *ngIf="getTechnology(tech).logo"
+                [src]="getTechnology(tech).logo"
+                [alt]="tech + ' logo'"
+                loading="lazy"
+                (error)="onTechnologyLogoError($event)"
+              />
+
+              <span
+                class="tech-logo-fallback"
+                [style.display]="
+                  getTechnology(tech).logo
+                    ? 'none'
+                    : 'inline-flex'
+                "
+              >
+                {{ tech }}
+              </span>
+            </span>
+          </div>
+
+          <!-- PROJECT LINKS -->
+<div class="project-card-actions">
+  <a
+    *ngIf="project.liveUrl || project.previewUrl"
+    class="project-action project-action-primary"
+    [href]="project.liveUrl || project.previewUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    (click)="$event.stopPropagation()"
+  >
+    <span>↗</span>
+    Live Demo
+  </a>
+
+  <a
+    *ngIf="project.githubUrl"
+    class="project-action project-action-secondary"
+    [href]="project.githubUrl"
+    target="_blank"
+    rel="noopener noreferrer"
+    (click)="$event.stopPropagation()"
+  >
+    <span>⌘</span>
+    GitHub
+  </a>
+</div>
+
+         
+        </div>
+      </button>
+    </article>
+  </div>
+</section>
+
 
 
 
@@ -741,15 +840,37 @@
             systems work end to end—from data and APIs to the interface
             people interact with.
           </p>
-          <div class="education-card">
-            <!-- <span class="education-icon">↗</span> -->
-            <div>
-              <span class="eyebrow">EDUCATION</span>
-              <h3>B.Tech — Information Technology</h3>
-              <p>Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded</p>
-              <span class="education-score">CGPA 7.90 / 10</span>
-            </div>
-          </div>
+        
+<div class="education-card">
+  <div class="education-content">
+    <span class="eyebrow education-label">
+      <svg
+        class="education-cap"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <path d="m2 10 10-6 10 6-10 6-10-6Z" />
+        <path d="M6 12.5V17c3.5 2.5 8.5 2.5 12 0v-4.5" />
+        <path d="M22 10v6" />
+      </svg>
+      EDUCATION
+    </span>
+
+    <h3>B.Tech — Information Technology</h3>
+
+    <p>
+      Shri Guru Gobind Singhji Institute of Engineering and Technology, Nanded
+    </p>
+
+    <span class="education-score">CGPA 7.90 / 10</span>
+  </div>
+</div>
+
         </div>
       </div>
     </section>
@@ -898,56 +1019,7 @@
   </footer>
 </div>
 
-<!-- PROJECT DETAILS MODAL -->
-<div class="modal-backdrop"
-     *ngIf="selectedProject as project"
-     (click)="closeProject()">
-  <section class="project-modal"
-           role="dialog"
-           aria-modal="true"
-           [attr.aria-label]="project.name + ' project details'"
-           (click)="$event.stopPropagation()">
-    <button class="modal-close" type="button" (click)="closeProject()" aria-label="Close project details">×</button>
-    <p class="eyebrow">PROJECT / {{ project.number }} · {{ project.category }}</p>
-    <div class="modal-symbol" [attr.data-accent]="project.accent">{{ project.symbol }}</div>
-    <h2>{{ project.name }}</h2>
-    <p class="modal-subtitle">{{ project.subtitle }}</p>
-    <p class="modal-description">{{ project.description }}</p>
-   <div class="tech-list modal-tech">
-  <a
-    *ngFor="let tech of project.technologies"
-    class="tech-logo-link"
-    [href]="getTechnology(tech).docsUrl"
-    target="_blank"
-    rel="noopener noreferrer"
-    [attr.aria-label]="tech + ' official documentation'"
-    [attr.title]="tech + ' — Open documentation'"
-  >
-    <img
-      *ngIf="getTechnology(tech).logo"
-      [src]="getTechnology(tech).logo"
-      [alt]="tech + ' logo'"
-      loading="lazy"
-      (error)="onTechnologyLogoError($event)"
-    />
 
-    <span
-      class="tech-logo-fallback"
-      [style.display]="getTechnology(tech).logo ? 'none' : 'inline-flex'"
-    >
-      {{ tech }}
-    </span>
-  </a>
-</div>
-    <div class="modal-actions">
-      <a *ngIf="project.liveUrl" class="button button-primary"
-         [href]="project.liveUrl" target="_blank" rel="noopener noreferrer">Open live demo ↗</a>
-      <a *ngIf="project.githubUrl" class="button button-ghost"
-         [href]="project.githubUrl" target="_blank" rel="noopener noreferrer">View repository ↗</a>
-      <span *ngIf="!project.githubUrl" class="repository-note">Repository link coming soon</span>
-    </div>
-  </section>
-</div>
 
 <!-- PORTFOLIO ASSISTANT -->
 <div class="assistant-widget">

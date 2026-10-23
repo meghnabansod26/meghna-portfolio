@@ -26,6 +26,7 @@ interface Project {
   description: string;
   technologies: string[];
   liveUrl?: string;
+  previewUrl?: string;
   githubUrl?: string;
   featured?: boolean;
 }
@@ -238,51 +239,112 @@ onLogoError(event: Event): void {
 }
 
   // Add each project's actual repository URL when ready.
-  readonly projects: Project[] = [
-    {
-      id: 1, number: '01', name: 'FoodieHub',
-      subtitle: 'Food delivery · AI recommendations',
-      category: 'AI', symbol: 'F.', accent: 'blue', featured: true,
-      description: 'A full-stack food delivery application with user and admin experiences, image storage using AWS S3, Razorpay payment integration, and an AI assistant that recommends food based on user preferences and budget.',
-      technologies: ['React', 'Spring Boot', 'MongoDB', 'AWS S3', 'Razorpay', 'AI Integration'],
-      liveUrl: 'https://foodiehub-meghna.vercel.app/'
-    },
-    {
-      id: 2, number: '02', name: 'TweetBuddy',
-      subtitle: 'Social networking · Real time',
-      category: 'Full Stack', symbol: 'T.', accent: 'violet',
-      description: 'A social networking application built with Next.js and Node.js, using MongoDB for data persistence and Socket.IO for real-time communication.',
-      technologies: ['Next.js', 'Node.js', 'MongoDB', 'Socket.IO']
-    },
-    {
-      id: 3, number: '03', name: 'Employee Management',
-      subtitle: 'Employee records · CRUD',
-      category: 'Frontend', symbol: 'E.', accent: 'cyan',
-      description: 'An Angular application for managing employee information through structured forms, data listings, and CRUD-style workflows.',
-      technologies: ['Angular', 'TypeScript', 'HTML', 'CSS']
-    },
-    {
-      id: 4, number: '04', name: 'Widget Management',
-      subtitle: 'Dashboard · Data management',
-      category: 'Frontend', symbol: 'W.', accent: 'blue',
-      description: 'A dashboard-oriented application exploring reusable UI components, widget organization, and structured data presentation.',
-      technologies: ['Angular', 'TypeScript', 'CSS']
-    },
-    {
-      id: 5, number: '05', name: 'Book Readers',
-      subtitle: 'Reading · Content discovery',
-      category: 'Frontend', symbol: 'B.', accent: 'pink',
-      description: 'A website concept for readers, focused on presenting book-related content through a clear, accessible interface.',
-      technologies: ['HTML', 'CSS', 'JavaScript']
-    },
-    {
-      id: 6, number: '06', name: 'Disease Prediction',
-      subtitle: 'Prediction · Data exploration',
-      category: 'Backend', symbol: 'D.', accent: 'mint',
-      description: 'An academic project exploring disease prediction using data-driven techniques. Confirm the precise model and dataset from your source code before publishing technical claims.',
-      technologies: ['Machine Learning', 'Python']
-    }
-  ];
+ 
+readonly projects: Project[] = [
+  {
+    id: 1,
+    number: '01',
+    name: 'FoodieHub',
+    subtitle: 'Food delivery · AI recommendations',
+    category: 'AI',
+    symbol: 'F.',
+    accent: 'blue',
+    featured: true,
+    description:
+      'A full-stack food delivery platform with customer and admin experiences, AWS S3 image storage, Razorpay payment integration, and an AI assistant that recommends food based on user preferences and budget.',
+    technologies: [
+      'React',
+      'Spring Boot',
+      'MongoDB',
+      'AWS S3',
+      'Razorpay',
+      'AI'
+    ],
+    liveUrl: 'https://foodiehub-meghna.vercel.app/',
+    githubUrl:
+      'https://github.com/meghnabansod26/foodiehub-fullstack'
+  },
+  {
+    id: 2,
+    number: '02',
+    name: 'TweetBuddy',
+    subtitle: 'Social networking · Real time',
+    category: 'Full Stack',
+    symbol: 'T.',
+    accent: 'violet',
+    description:
+      'A social networking application built with Next.js and Node.js, featuring MongoDB data persistence and real-time communication using Socket.IO.',
+    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Socket.IO'],
+    githubUrl:
+      'https://github.com/meghnabansod26/TweetBuddy-Client',
+    previewUrl:
+      'https://drive.google.com/file/d/1I_7DwdlgnpLkbT3relhwXfeLR7o5BLN8/view'
+  },
+  {
+    id: 3,
+    number: '03',
+    name: 'Employee Management',
+    subtitle: 'Employee records · CRUD',
+    category: 'Frontend',
+    symbol: 'E.',
+    accent: 'cyan',
+    description:
+      'An Angular application for managing employee records through structured forms, data listings, and create, read, update, and delete operations.',
+    technologies: ['Angular', 'TypeScript', 'HTML', 'CSS'],
+    githubUrl:
+      'https://github.com/meghnabansod26/Employee-Management-System_AngularCrud_App',
+    previewUrl:
+      'https://drive.google.com/file/d/11U5kQ6hIlEgDMlP2zzw77J-DsA1pkJnz/view'
+  },
+  {
+    id: 4,
+    number: '04',
+    name: 'Widget Management',
+    subtitle: 'Dashboard · Data management',
+    category: 'Frontend',
+    symbol: 'W.',
+    accent: 'blue',
+    description:
+      'A dashboard application focused on reusable UI components, widget organization, and structured data presentation.',
+    technologies: ['Angular', 'TypeScript', 'CSS'],
+    githubUrl:
+      'https://github.com/meghnabansod26/Widget-Management',
+    liveUrl:
+      'https://widget-management-dashboard.vercel.app/'
+  },
+  {
+    id: 5,
+    number: '05',
+    name: 'Readers Website',
+    subtitle: 'Reading · Content discovery',
+    category: 'Frontend',
+    symbol: 'B.',
+    accent: 'pink',
+    description:
+      'A website for readers, designed to present book-related content through a clear and accessible interface.',
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    githubUrl:
+      'https://github.com/meghnabansod26/Readers-Website',
+    liveUrl:
+      'https://meghnabansod26.github.io/Readers-Website/'
+  },
+  {
+    id: 6,
+    number: '06',
+    name: 'Disease Prediction',
+    subtitle: 'Prediction · Data exploration',
+    category: 'Backend',
+    symbol: 'D.',
+    accent: 'mint',
+    description:
+      'An academic project exploring disease prediction using data-driven techniques.',
+    technologies: ['Machine Learning', 'Python'],
+       githubUrl:
+      'https://github.com/meghnabansod26/Disease-Prediction-',
+    liveUrl:
+      ''
+  }
+];
 
 
   
@@ -342,7 +404,7 @@ experiences = [
   {
     company: 'Lentra',
     role: 'Full Stack Developer Intern',
-    period: 'ADD YOUR ACTUAL INTERNSHIP DATES',
+    period: 'Oct 2024 – May 2025',
     location: 'Pune, India',
     type: 'INTERNSHIP',
     showClients: false,
