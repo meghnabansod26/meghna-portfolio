@@ -52,7 +52,7 @@ private destroyed = false;
   private copyTimer?: ReturnType<typeof setTimeout>;
 
   readonly email = 'meghnabansod26@gmail.com';
-  readonly resumeUrl = 'YOUR_RESUME_URL';
+  readonly resumeUrl = 'https://drive.google.com/file/d/1vCWmmLCfYJEdB0x9h5mrQO9-bx3mL6-A/view?usp=sharing';
   readonly githubUrl = 'https://github.com/meghnabansod26';
   readonly linkedinUrl = 'https://linkedin.com/in/meghnabansod';
   readonly portfolioUrl = 'https://meghna-personal-portfolio.vercel.app/';

@@ -333,10 +333,17 @@
 }
 
 .section-wrap {
-  width: calc(100% - 48px);
-  max-width: 1180px;
+  width: calc(100% - 64px);
+  max-width: 1400px;
   min-width: 0;
   margin-inline: auto;
+  box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+  .section-wrap {
+    width: calc(100% - 32px);
+  }
 }
 
 @media (max-width: 900px) {
@@ -477,6 +484,13 @@
 .button-ghost:hover {
   border-color: rgba(125, 180, 255, 0.45);
   background: rgba(83, 145, 226, 0.08);
+}
+
+.button.button-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .hero-meta {
