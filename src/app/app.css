@@ -9383,3 +9383,48 @@
     max-width: 185px !important;
   }
 }
+
+/* Mobile animation support across the portfolio */
+@media (hover: none), (pointer: coarse) {
+  /* Keep floating animations */
+  .floating-note {
+    animation: mobile-badge-float 4s ease-in-out infinite;
+  }
+
+  /* Certificate cards */
+  .certification-card {
+    transition: transform 300ms ease, box-shadow 300ms ease,
+                border-color 300ms ease;
+  }
+
+  .certification-card:active,
+  .education-card:active,
+  .project-card:active,
+  .skill-card:active {
+    transform: scale(0.985);
+    transition-duration: 150ms;
+  }
+
+  /* Certificate shine */
+  .certification-card:active::after {
+    display: block;
+    opacity: 1;
+    animation: certification-shine 800ms ease-out;
+  }
+
+  /* Project-card visual feedback */
+  .project-card:active::before,
+  .project-card:active::after {
+    opacity: 1;
+  }
+}
+
+@keyframes mobile-badge-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
