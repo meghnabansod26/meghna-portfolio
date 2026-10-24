@@ -8548,13 +8548,14 @@
   }
 
   /* Backend badge: upper-right */
-  .hero-visual > .floating-note.note-top {
-    top: 10% !important;
-    right: 0 !important;
-    bottom: auto !important;
-    left: auto !important;
-    animation-delay: 0s !important;
-  }
+ /* Backend badge: move below the availability label */
+.hero-visual > .floating-note.note-top {
+  top: 20% !important;
+  right: 0 !important;
+  bottom: auto !important;
+  left: auto !important;
+  animation-delay: 0s !important;
+}
 
   /* Frontend badge: lower-left, above the caption area */
   .hero-visual > .floating-note.note-bottom {
@@ -8691,5 +8692,682 @@
   .hero-actions .button svg {
     width: 14px;
     height: 14px;
+  }
+}
+
+
+
+
+
+/* =====================================================
+   EXPERIENCE SECTION — FINAL RESPONSIVE FIX
+   Mobile layout: readable titles, clean cards, less space
+===================================================== */
+
+@media screen and (max-width: 600px) {
+
+  /* =====================================================
+     1. MAIN EXPERIENCE CARD
+  ===================================================== */
+
+  .exp-v2-card {
+    display: block !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 14px !important;
+    overflow: hidden !important;
+    border-radius: 16px !important;
+  }
+
+
+  /* =====================================================
+     2. COMPANY HEADER
+     Logo and job information side by side
+  ===================================================== */
+
+  .exp-v2-company-header {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: start !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .exp-v2-company-identity {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .exp-v2-company-identity > * {
+    min-width: 0 !important;
+  }
+
+  .exp-v2-company-identity .exp-v2-logo {
+    display: grid !important;
+    place-items: center !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    max-width: 44px !important;
+    flex: 0 0 44px !important;
+    padding: 6px !important;
+    box-sizing: border-box !important;
+    border-radius: 11px !important;
+  }
+
+  .exp-v2-company-identity .exp-v2-logo img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .exp-v2-role {
+    display: block !important;
+    flex: 1 1 0% !important;
+    width: auto !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .exp-v2-kicker {
+    display: block !important;
+    margin: 0 0 4px !important;
+    font-size: 9px !important;
+    line-height: 1.5 !important;
+    letter-spacing: 0.1em !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-role h3 {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 4px 0 7px !important;
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+    writing-mode: horizontal-tb !important;
+  }
+
+  .exp-v2-company-name {
+    display: block !important;
+    margin: 0 0 7px !important;
+    font-size: 14px !important;
+    line-height: 1.4 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-meta {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    align-items: center !important;
+    gap: 5px 10px !important;
+    width: 100% !important;
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+  }
+
+  .exp-v2-meta > * {
+    min-width: 0 !important;
+    max-width: 100% !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+
+  /* =====================================================
+     3. DESCRIPTION
+     Full width below the company header
+  ===================================================== */
+
+  .exp-v2-summary {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+
+  .exp-v2-summary > p {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 0 12px !important;
+    font-size: 12px !important;
+    line-height: 1.65 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+
+  /* =====================================================
+     4. TECHNOLOGY ICONS
+     Three icons per row
+  ===================================================== */
+
+  .exp-v2-tech-list {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    justify-content: start !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-top: 10px !important;
+  }
+
+  .exp-v2-tech-list span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 0 !important;
+    min-height: 42px !important;
+    box-sizing: border-box !important;
+    padding: 7px !important;
+    font-size: 11px !important;
+    line-height: 1.3 !important;
+    text-align: center !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+
+  /* =====================================================
+     5. CLIENT EXPOSURE
+     One readable client per row
+  ===================================================== */
+
+  .exp-v2-client-panel {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-top: 14px !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    border-radius: 15px !important;
+  }
+
+  .exp-v2-client-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .exp-v2-client-heading h4 {
+    margin: 4px 0 0 !important;
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-client-note {
+    font-size: 10px !important;
+    line-height: 1.5 !important;
+  }
+
+  .exp-v2-client-grid {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .exp-v2-client {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    padding: 9px !important;
+    box-sizing: border-box !important;
+  }
+
+  .exp-v2-client .exp-v2-logo {
+    display: grid !important;
+    place-items: center !important;
+    width: 72px !important;
+    height: 46px !important;
+    min-width: 72px !important;
+    max-width: 72px !important;
+    flex: 0 0 72px !important;
+    padding: 5px !important;
+    box-sizing: border-box !important;
+    border-radius: 10px !important;
+  }
+
+  .exp-v2-client .exp-v2-logo img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .exp-v2-client > *:not(.exp-v2-logo) {
+    flex: 1 1 auto !important;
+    min-width: 0 !important;
+    font-size: 11px !important;
+    line-height: 1.45 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+
+  /* =====================================================
+     6. PROJECT EXPLORER
+  ===================================================== */
+
+  .exp-v2-explorer {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin-top: 14px !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    border-radius: 15px !important;
+  }
+
+  .exp-v2-explorer-heading {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 5px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .exp-v2-explorer-heading h4 {
+    margin: 4px 0 0 !important;
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-module-layout {
+    display: grid !important;
+    grid-template-columns: minmax(0, 1fr) !important;
+    align-items: start !important;
+    gap: 10px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+
+  /* =====================================================
+     7. MODULE BUTTONS
+     Compact two-column layout
+  ===================================================== */
+
+  .exp-v2-module-nav {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .exp-v2-module-button {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 64px !important;
+    padding: 9px !important;
+    box-sizing: border-box !important;
+    text-align: left !important;
+  }
+
+  .exp-v2-module-icon {
+    display: grid !important;
+    place-items: center !important;
+    width: 32px !important;
+    height: 32px !important;
+    min-width: 32px !important;
+    flex: 0 0 32px !important;
+    font-size: 16px !important;
+  }
+
+  .exp-v2-module-label {
+    display: flex !important;
+    flex: 1 1 0% !important;
+    flex-direction: column !important;
+    gap: 4px !important;
+    min-width: 0 !important;
+  }
+
+  .exp-v2-module-label strong {
+    font-size: 12px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-module-label small {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+
+  /* =====================================================
+     8. SELECTED PROJECT DETAILS
+  ===================================================== */
+
+  .exp-v2-module-detail {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-module-detail h2,
+  .exp-v2-module-detail h3,
+  .exp-v2-module-detail h4 {
+    max-width: 100% !important;
+    font-size: 15px !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-module-detail p {
+    font-size: 12px !important;
+    line-height: 1.6 !important;
+    white-space: normal !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .exp-v2-module-detail [class*="contribution"] {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    padding: 10px !important;
+    box-sizing: border-box !important;
+  }
+
+
+  /* =====================================================
+     9. FEATURE FLOW
+  ===================================================== */
+
+  .exp-v2-module-detail .flow-track {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 6px !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+
+  .exp-v2-module-detail .flow-step {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 9px !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+  }
+
+}
+
+
+/* =====================================================
+   EXTRA SMALL PHONES
+===================================================== */
+
+@media screen and (max-width: 360px) {
+
+  .exp-v2-card {
+    padding: 10px !important;
+  }
+
+  .exp-v2-company-identity {
+    gap: 9px !important;
+  }
+
+  .exp-v2-company-identity .exp-v2-logo {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    flex-basis: 38px !important;
+  }
+
+  .exp-v2-role h3 {
+    font-size: 15px !important;
+  }
+
+  .exp-v2-module-nav {
+    grid-template-columns: minmax(0, 1fr) !important;
+  }
+
+  .exp-v2-module-button {
+    min-height: 58px !important;
+  }
+}
+
+
+
+/* =========================================
+   CONTACT SECTION — MOBILE OPTIMIZATION
+========================================= */
+
+@media screen and (max-width: 600px) {
+
+  .contact-section {
+    padding: 44px 0 32px !important;
+    overflow: hidden !important;
+  }
+
+  .contact-inner {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 14px !important;
+    box-sizing: border-box !important;
+  }
+
+  .contact-inner .eyebrow {
+    /* justify-content: space-between !important; */
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+    font-size: 9px !important;
+  }
+
+  .contact-inner h2 {
+    font-size: clamp(27px, 7vw, 36px) !important;
+    line-height: 1.2 !important;
+    margin: 16px 0 0 !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .contact-inner > p:not(.eyebrow) {
+    max-width: 320px !important;
+    margin: 12px auto 0 !important;
+    font-size: 12px !important;
+    line-height: 1.7 !important;
+  }
+
+  /* Contact actions */
+  .contact-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 8px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 18px !important;
+  }
+
+  .contact-actions a,
+  .contact-actions button {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 44px !important;
+    padding: 12px !important;
+    box-sizing: border-box !important;
+    border-radius: 9px !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+    white-space: normal !important;
+    overflow-wrap: anywhere !important;
+  }
+
+  /* Prevent oversized primary email button */
+  .contact-actions .btn-primary,
+  .contact-actions .button-primary {
+    min-height: 48px !important;
+    height: auto !important;
+    padding: 14px 12px !important;
+  }
+
+  .social-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    margin-top: 24px !important;
+  }
+
+  .social-links a {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 40px !important;
+    height: 40px !important;
+    box-sizing: border-box !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px !important;
+    font-size: 14px !important;
+  }
+
+  /* Footer */
+  .footer {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    min-height: 0 !important;
+    padding: 18px 14px !important;
+    text-align: center !important;
+  }
+
+  .footer-brand {
+    min-width: 0 !important;
+  }
+
+  .footer > span,
+  .footer > a:last-child {
+    font-size: 9px !important;
+  }
+}
+
+
+
+/* FINAL FIX — CONTACT BUTTON HEIGHT ON MOBILE */
+@media screen and (max-width: 600px) {
+
+  .contact-section .contact-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+    align-items: stretch !important;
+    margin-top: 18px !important;
+  }
+
+  .contact-section .contact-actions > * {
+    height: 48px !important;
+    min-height: 48px !important;
+    max-height: 48px !important;
+    flex: 0 0 48px !important;
+    padding: 0 14px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1.3 !important;
+  }
+
+  .contact-section .contact-actions a,
+  .contact-section .contact-actions button {
+    font-size: 11px !important;
+  }
+
+  .contact-section .contact-actions svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+
+@media (max-width: 420px) {
+  .floating-note {
+    padding: 8px 9px !important;
+    gap: 6px !important;
+  }
+
+  .floating-note .note-icon {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 14px !important;
+  }
+
+  .floating-note small {
+    font-size: 7px !important;
+  }
+
+  .floating-note strong {
+    font-size: 8px !important;
+    letter-spacing: -0.3px !important;
+    white-space: nowrap !important;
+  }
+
+  .note-bottom {
+    width: max-content !important;
+    max-width: 185px !important;
   }
 }
