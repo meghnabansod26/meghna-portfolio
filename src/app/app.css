@@ -9474,3 +9474,107 @@
     transform-origin: center;
   }
 }
+
+
+
+
+/* Project button spacing — mobile only */
+@media screen and (max-width: 580px) {
+  #work .project-card-actions {
+    background: transparent !important;
+    padding: 14px 12px 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    justify-content: stretch !important;
+    gap: 12px !important;
+  }
+
+  #work .project-card-actions > .project-action {
+    box-sizing: border-box !important;
+    flex: 1 1 0 !important;
+    width: auto !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+
+
+/* Projects section — centered on mobile only */
+@media screen and (max-width: 580px) {
+  #work .section-heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 18px;
+  }
+
+  #work .section-heading > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  #work .section-heading .eyebrow {
+   justify-content: center;
+    margin: 0 auto;
+  }
+
+  #work .section-heading h2 {
+    text-align: center;
+    margin-inline: auto;
+  }
+
+  #work .section-heading h2 span {
+    display: inline;
+  }
+
+  #work .section-heading .section-intro {
+    width: 100%;
+    max-width: 340px;
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
+
+/* Technical Toolkit heading — mobile only */
+@media screen and (max-width: 580px) {
+  #skills .section-heading {
+    text-align: center;
+  }
+
+  #skills .section-heading > div {
+    width: 100%;
+    text-align: center;
+  }
+
+  #skills .section-heading .eyebrow {
+justify-content: center;
+    margin: 0 auto;
+  }
+
+  #skills .section-heading h2 {
+    text-align: center;
+    margin-inline: auto;
+  }
+}
+
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.section-eyebrow .status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  min-width: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background-color: #72d9bc;
+  box-shadow: 0 0 13px rgba(114, 217, 188, 0.65);
+}
