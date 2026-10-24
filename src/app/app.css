@@ -9465,3 +9465,14 @@
     align-self: flex-start;
   }
 }
+
+
+/* Lentra logo — mobile only */
+@media screen and (max-width: 600px) {
+  img[alt="Lentra logo"] {
+    width: 44px !important;
+    height: 44px !important;
+    object-fit: contain;
+    object-position: center;
+  }
+}
