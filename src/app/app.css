@@ -5912,18 +5912,30 @@
   }
 }
 
-/* Disable pointer-only effects on touch devices. */
+/* Adapt pointer-only effects for touch devices */
 @media (hover: none), (pointer: coarse) {
   .cursor-glow {
     display: none;
   }
 
+  /* Keep the badges gently animated on mobile */
   .floating-note {
-    animation: none;
+    animation: mobile-badge-float 4s ease-in-out infinite;
   }
 
+  /* Keep project cards visually styled on touch devices */
   .project-card:hover {
     box-shadow: none;
+  }
+}
+
+@keyframes mobile-badge-float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
   }
 }
 
