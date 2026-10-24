@@ -9439,3 +9439,29 @@
     transform: translateY(-5px);
   }
 }
+
+
+
+@media screen and (max-width: 600px) {
+  .exp-v2-template-client {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    box-sizing: border-box !important;
+    width: 100% !important;
+    padding: 10px 12px !important;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .exp-v2-template-client .poonawalla-logo {
+    display: block !important;
+    width: 100px !important;
+    height: 32px !important;
+    max-width: 100% !important;
+    object-fit: contain;
+    object-position: left center;
+    margin: 0 !important;
+    align-self: flex-start;
+  }
+}
