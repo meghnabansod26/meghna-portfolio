@@ -5993,11 +5993,11 @@
   }
 }
 
-/* Keep the profile still on touch devices */
+/* Keep the profile photo animation active on touch devices */
 @media (hover: none), (pointer: coarse) {
   .photo-frame {
-    animation: none;
-    will-change: auto;
+    animation: profile-frame-float 7s ease-in-out infinite;
+    will-change: transform;
   }
 }
 
@@ -6038,9 +6038,20 @@
   pointer-events: none;
 }
 
-#home::before,
+/* #home::before,
 .photo-frame {
   animation: none !important;
+} */
+
+@media (hover: none), (pointer: coarse) {
+  .photo-frame {
+    animation: profile-frame-float 7s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .floating-note {
+    animation: mobile-badge-float 4s ease-in-out infinite;
+  }
 }
 
 

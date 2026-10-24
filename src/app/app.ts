@@ -1186,8 +1186,9 @@ onDocumentMouseMove(event: MouseEvent): void {
 /**
  * Reveal content as it enters the viewport.
  */
+
 ngAfterViewInit(): void {
-   // Show assistant after 2.5 seconds
+  // Show the assistant after 2 seconds
   if (this.assistantTimer) {
     clearTimeout(this.assistantTimer);
   }
@@ -1195,13 +1196,25 @@ ngAfterViewInit(): void {
   this.assistantTimer = setTimeout(() => {
     this.assistantOpen = true;
   }, 2000);
+
+  // Elements that use scroll-reveal animations
+  const revealElements = document.querySelectorAll(
+    '.reveal-on-scroll, .project-card, .exp-v2-entry, .skill-card, .award-row'
+  );
+
+  // Always show content if scroll observation is unavailable
+  // or reduced motion is enabled on the device.
   if (
     typeof IntersectionObserver === 'undefined' ||
     window.matchMedia('(prefers-reduced-motion: reduce)').matches
   ) {
+    revealElements.forEach((element) => {
+      element.classList.add('is-visible');
+    });
     return;
   }
 
+  // Animate elements as they enter the viewport
   this.revealObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -1219,6 +1232,7 @@ ngAfterViewInit(): void {
 
   this.observeRevealElements();
 }
+
 
 /**
  * Observe current sections, cards, and timeline entries.
