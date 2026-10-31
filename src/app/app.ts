@@ -297,7 +297,7 @@ readonly projects: Project[] = [
     githubUrl:
       'https://github.com/meghnabansod26/TweetBuddy-Client',
     previewUrl:
-      'https://drive.google.com/file/d/1I_7DwdlgnpLkbT3relhwXfeLR7o5BLN8/view'
+      'https://tweet-buddy.vercel.app/'
   },
   {
     id: 3,
